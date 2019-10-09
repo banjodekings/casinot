@@ -1482,7 +1482,7 @@ getBetDataById = async (BetId) => {
                       // Render Children
                       return (<div className={'my-extension text-center'}>
 
-                       <div className="nav-wrapper">
+                       <div className="nav-wrapper" style={{padding:15}}>
                         <ul className="nav nav-pills nav-fill flex-md-row" id="tabs-icons-text" role="tablist">
                             <li className="nav-item"
                             onClick={()=>{
@@ -1510,10 +1510,10 @@ getBetDataById = async (BetId) => {
                        </div>
                       <div style={{display:gettingStarted?'block':'none'}}>
 
-                       <h6 className="text-center"><strong>Crypto Gambling Foundation Verifier</strong></h6>
+                      <h6 className="text-center" style={{color:"blue",fontSize:24}}><strong>Crypto Gambling Foundation</strong></h6>
                        <img src='https://pbs.twimg.com/profile_images/906057204578390016/-icT77rY_400x400.jpg'  style={{ width: '75%'}}/>
 
-                       <p><span style={{fontStyle:'bold'}}>Operator</span> is a CGF verified operator.</p>
+                       <p><strong style={{fontStyle:'bold',color:"blue",fontSize:24}}>Don't Trust...</strong>  <span style={{color:"green",fontSize:24}}>Verify</span></p>
                        <button className="btn btn-info mb-3" type="button" onClick={()=>{
                          // this.getSessionTokenBitvest()
                          this.setState({gettingStarted:!gettingStarted, enterAPIStake:true})
@@ -1596,7 +1596,7 @@ getBetDataById = async (BetId) => {
 
 
                       <div style={{display:enterAPIStake?'block':'none'}}>
-                       <div className="form-group">
+                       <div className="form-group" style={{padding:20}}>
                          <label className="form-control-label">Enter Your Bet Token</label>
                          <img src="https://camo.githubusercontent.com/184f5fe3162ac51bdc0c89207d568c691d053aea/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f353331393931362f323437373339332f36303565656639362d623037302d313165332d383134612d3637613132383166303665312e706e67" style={{ width: '10%'}} data-toggle="popover" data-placement="left" title='Instructions for using extension on Stake and PrimeDice:
                              1. Open website then click "settings" from the dropdown menu at the top of the screen.
@@ -1615,7 +1615,7 @@ getBetDataById = async (BetId) => {
 
                      <div style={{display:enterAPI?'block':'none'}}>
 
-                     <div className="form-group">
+                     <div className="form-group" style={{padding:20}}>
                        <label className="form-control-label">Enter Your API Key</label>
                        <input className="form-control form-control-sm" type="text" value={apiKey} placeholder="API Key" onChange={(e)=>{this.setState({apiKey:e.target.value})}}/>
                        <button type="button" className="btn btn-secondary m-2" onClick={()=>{
@@ -1631,15 +1631,15 @@ getBetDataById = async (BetId) => {
 
 
                      <div className="SettingsUI Bitvest Stake" style={{display:settings?'block':'none'}}>
-                     <div className="form-group">
-                       <label className="form-control-label">Next Server Seed Hash </label>
+                     <div className="form-group" style={{padding:20}}>
+                       <label className="form-control-label">Server Seed Hash </label>
                        <img src="https://camo.githubusercontent.com/184f5fe3162ac51bdc0c89207d568c691d053aea/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f353331393931362f323437373339332f36303565656639362d623037302d313165332d383134612d3637613132383166303665312e706e67" style={{ width: '10%'}}
                        data-toggle="popover" data-placement="left" title="This is the server seed that has been created by the casino. It is sent to you in advance of any bets being made to ensure the casino did not change or manipulate the outcome of any game results. It is hashed(encrypted) to prevent players from calculating the upcoming game results. Once you request a new server seed, the one that is currently in use will be unhashed(decrypted) and sent to the verification tab. All bets made using that server seed will be automatically verified. You will be notified if any bets did not pass verification."/>
                        <input className="form-control form-control-sm" type="text" value={serverSeedHash} placeholder="" onChange={(e)=>{this.setState({serverSeedHash:e.target.value })}}/>
                        <button type="button" className="btn btn-secondary m-2"   onClick={this.handleRequest}> Request</button>
                      </div>
 
-                     <div className="form-group">
+                     <div className="form-group" style={{padding:20}}>
                        <label className="form-control-label">Client Seed</label>
                        <img src="https://camo.githubusercontent.com/184f5fe3162ac51bdc0c89207d568c691d053aea/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f353331393931362f323437373339332f36303565656639362d623037302d313165332d383134612d3637613132383166303665312e706e67" style={{ width: '10%'}} data-toggle="popover" data-placement="left" title="This is the client seed. Sometimes called the player seed. It is very important that you customize this after you request a new server seed. The server seed and client seed pre-filled by default. To ensure provable fairness, you must customize your own client seed. It will be used in combination with the server seed to generate thr game results."/>
 
@@ -1761,20 +1761,20 @@ getBetDataById = async (BetId) => {
 
                      <div className="VerificationUI-Stake" className="table-responsive" style={{display: verification?'block':'none', fontSize: '11px'}}>
 
-                     <span className="alert alert-success p-2">
+                     <span className="alert alert-success p-2" style={{margin:15,height:40}}>
                        <span>Nonce</span>
-                       <span  className={"badge badge-md badge-circle badge-floating badge-danger border-white"}>{isNonceManipulated?"Fail":"Ok"}</span>
+                       <span  className={"badge badge-md badge-circle badge-floating badge-danger border-white"} style={{marginLeft:10}}>{isNonceManipulated?"Fail":"Ok"}</span>
                      </span>
-                     <span className="alert alert-danger p-2">
+                     <span className="alert alert-danger p-2" style={{margin:15,height:40}}>
                        <span>Bets Fail</span>
-                       <span  className="badge badge-md badge-circle badge-floating badge-danger border-white">{numberBetsVerFailed}</span>
+                       <span  className="badge badge-md badge-circle badge-floating badge-danger border-white" style={{marginLeft:10}}>{numberBetsVerFailed}</span>
                      </span>
-                     <div className="form-group">
+                     <div className="form-group" style={{margin:15}}>
                        <button type="button" className="btn btn-secondary m-2"   onClick={this.processBetsStake}> Verify Recent Bets</button>
                      </div>
-                     <div className="Bitvest" style={{display:'none'}}>
+                     <div className="Bitvest" style={{display:'none',paddingLeft:10,paddingRight:10}}>
                        <table className="table align-items-center table-flush table-hover">
-                         <thead className="thead-light">
+                         <thead className="thead-light" >
                            <tr>
                              <th>Id</th>
                              <th>Game</th>
@@ -1818,7 +1818,7 @@ getBetDataById = async (BetId) => {
                          </tbody>
                        </table>
                      </div>
-                     <div className="Stake" style={{display:verification?'block':'none'}}>
+                     <div className="Stake" style={{display:verification?'block':'none',paddingLeft:10,paddingRight:10}}>
                        <table className="table align-items-center table-flush table-hover">
                          <thead className="thead-light">
                            <tr>
@@ -1830,7 +1830,7 @@ getBetDataById = async (BetId) => {
                            </tr>
                          </thead>
 
-                         <tbody>
+                         <tbody style={{backgroundColor:'red'}}>
                            {betData.map((item,i)=>{
                              return <tr key={i}>
                              <td>
